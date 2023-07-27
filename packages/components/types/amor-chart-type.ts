@@ -4,5 +4,6 @@ export type AmorChartProps = {
 
 export type Option = {
   width: number,
-  height: number
+  height: number,
+  background: string
 }

@@ -20,8 +20,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "baseUrl": "./",
   "paths": {
-    "@/*": ["packages/*"]
+    "@/*": ["packages/*"],
   },
   "include": [
     "src/**/*.ts",
