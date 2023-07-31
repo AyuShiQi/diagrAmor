@@ -2,20 +2,27 @@ export default {
   option: {
     type: Object,
     default: {
+      type: 0, // 条形图
       width: 300,
       height: 300,
       background: '#fff',
+      attention: {
+        color: '#888',
+        size: 12,
+        font: 'serif'
+      },
       padding: {
         x: 8,
         y: 8,
         gap: 8
       },
+
       data: [
         ['类型', '数量'],
-        ['高中', 8.3],
-        ['学士', 62],
-        ['硕士', 12.8],
-        ['博士', -16.9]
+        ['高中', 482.3],
+        ['学士', 568],
+        ['硕士', 573.8],
+        ['博士', 200]
       ],
       title: {
         content: '这里是标题',
@@ -42,6 +49,7 @@ export default {
           label: true,
           line: 'none',
           color: '#000',
+          lineColor: '#aaa',
           labelColor: '#888',
           labelSize: 12
         },
@@ -50,6 +58,7 @@ export default {
           label: true,
           line: 'line',
           color: '#000',
+          lineColor: '#aaa',
           labelColor: '#888',
           labelSize: 12
         }

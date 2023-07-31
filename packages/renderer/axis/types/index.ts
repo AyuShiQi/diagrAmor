@@ -5,6 +5,7 @@ export type Axis = {
     labelSize: number,
     line: 'none' | 'line' | 'dashed',
     color: string,
+    lineColor: string,
     labelColor: string
   },
   y: {
@@ -13,6 +14,7 @@ export type Axis = {
     labelSize: number,
     line: 'none' | 'line' | 'dashed',
     color: string,
+    lineColor: string,
     labelColor: string
   }
 }

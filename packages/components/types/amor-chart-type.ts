@@ -12,9 +12,15 @@ export type AmorChartProps = {
 }
 
 export type Option = {
+  type: number,
   width: number,
   height: number,
   background: string,
+  attention: {
+    color: string
+    size: number
+    font: string
+  } | false
   axis: Axis,
   data: any[][],
   padding: {

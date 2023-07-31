@@ -64,8 +64,7 @@ export function calAxisY (data: any[][], lineHeight: number, option: Option, res
     maxNum = Math.floor((unitGap + maxNum) / unitGap) * unitGap
     minNum = Math.floor((minNum - unitGap) / unitGap) * unitGap
   }
-
-  console.log(unitGap, maxNum, minNum)
+  // console.log(unitGap, maxNum, minNum)
   return {
     minNum,
     maxNum,

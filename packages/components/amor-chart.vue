@@ -15,11 +15,13 @@ import propsImport from './props/amor-chart'
 import type { AmorChartProps, ResultInfo } from './types/amor-chart-type'
 const props = defineProps(propsImport) as AmorChartProps
 
+import { calAxisY } from '../calculate/axis'
 // 渲染器
 import titleRenderer from '../renderer/title/index'
 import infoRenderer from '../renderer/info'
 import labelRenderer from '../renderer/label'
 import axisRenderer from '../renderer/axis/'
+import chartRenderer from '../renderer/charts/bar-charts'
 
 const amorCanvas = ref()
 
@@ -33,14 +35,23 @@ onMounted(() => {
     top: option.padding.y,
     bottom: ctx.canvas.height - option.padding.y
   }
+
+  ctx.lineWidth = 1
   // 这里是标题渲染器
   titleRenderer(option, ctx, resInfo)
   // 这里是单位渲染器
   infoRenderer(option, ctx, resInfo)
   // 标签渲染器
   labelRenderer(option, ctx, resInfo)
+  const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
   // 这里是坐标轴渲染器入口
-  axisRenderer(option, ctx, resInfo)
+  axisRenderer(option, ctx, resInfo, calInfo)
+  // 这里是内容物渲染
+  switch(option.type) {
+    case 0:
+      chartRenderer(option, ctx, resInfo, calInfo)
+      break
+  }
 })
 </script>
 
