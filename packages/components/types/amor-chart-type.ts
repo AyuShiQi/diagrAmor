@@ -16,6 +16,7 @@ export type Option = {
   width: number,
   height: number,
   background: string,
+  unitGap: number,
   attention: {
     color: string
     size: number

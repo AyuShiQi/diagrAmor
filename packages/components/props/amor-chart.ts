@@ -6,6 +6,7 @@ export default {
       width: 300,
       height: 150,
       background: '#fff',
+      unitGap: 20,
       attention: {
         color: '#888',
         size: 12,

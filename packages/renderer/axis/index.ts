@@ -27,14 +27,17 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
   if (x.label) {
     bottom -= x.labelSize + option.padding.gap - 1
   }
-  // 零点画法
-  ctx.beginPath()
+
   ctx.strokeStyle = y.color
-  ctx.moveTo(left, cal.zero);
-  ctx.lineTo(left - option.padding.gap, cal.zero)
-  ctx.stroke()
-  ctx.fillText('0', left - option.padding.gap - 2, cal.zero)    // 渲染分界线
-  switch (option.axis.y.line) {
+  // 零点画法
+  if (y.label) {
+    ctx.beginPath()
+    ctx.moveTo(left, cal.zero);
+    ctx.lineTo(left - option.padding.gap, cal.zero)
+    ctx.stroke()
+    ctx.fillText('0', left - option.padding.gap - 2, cal.zero)    // 渲染分界线
+  }
+  switch (y.line) {
     case 'dashed':
       ctx.beginPath()
       ctx.setLineDash([20, 5])
@@ -55,14 +58,16 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
   // 正向画法
   for (let i = cal.unitGap; i < cal.maxNum; i += cal.unitGap) {
     const cur = cal.zero - i / cal.unitGap * cal.len
-    ctx.beginPath()
     ctx.strokeStyle = y.color
-    ctx.moveTo(left, cur);
-    ctx.lineTo(left - option.padding.gap, cur)
-    ctx.stroke()
-    ctx.fillText(String(i), left - option.padding.gap - 2, cur)
+    if (y.label) {
+      ctx.beginPath()
+      ctx.moveTo(left, cur);
+      ctx.lineTo(left - option.padding.gap, cur)
+      ctx.stroke()
+      ctx.fillText(String(i), left - option.padding.gap - 2, cur)
+    }
     // 渲染分界线
-    switch (option.axis.y.line) {
+    switch (y.line) {
       case 'dashed':
         ctx.beginPath()
         ctx.setLineDash([20, 5])
@@ -84,12 +89,14 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
   // 反向画法
   for (let i = -cal.unitGap; i > cal.minNum; i -= cal.unitGap) {
     const cur = cal.zero - i / cal.unitGap * cal.len
-    ctx.beginPath()
     ctx.strokeStyle = y.color
-    ctx.moveTo(left, cur);
-    ctx.lineTo(left - option.padding.gap, cur)
-    ctx.stroke()
-    ctx.fillText(String(i), left - option.padding.gap - 2, cur)
+    if (y.label) {
+      ctx.beginPath()
+      ctx.moveTo(left, cur);
+      ctx.lineTo(left - option.padding.gap, cur)
+      ctx.stroke()
+      ctx.fillText(String(i), left - option.padding.gap - 2, cur)
+    }
     // 渲染分界线
     switch (option.axis.y.line) {
       case 'dashed':
@@ -110,10 +117,29 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
         break
     }
   }
-  ctx.beginPath()
-  ctx.moveTo(res.left, bottom)
-  ctx.lineTo(res.left, top)
-  ctx.stroke()
+
+  switch (y.type) {
+    case 'arrow':
+      ctx.beginPath()
+      ctx.fillStyle = y.lineColor
+      ctx.moveTo(res.left, top + 2)
+      ctx.lineTo(res.left - 1, top + 2)
+      ctx.lineTo(res.left, top)
+      ctx.lineTo(res.left + 1, top + 2)
+      ctx.lineTo(res.left, top + 2)
+      ctx.fill()
+      ctx.beginPath()
+      ctx.moveTo(res.left, bottom)
+      ctx.lineTo(res.left, top)
+      ctx.stroke()
+      break
+    case 'line':
+      ctx.beginPath()
+      ctx.moveTo(res.left, bottom)
+      ctx.lineTo(res.left, top)
+      ctx.stroke()
+      break
+  }
 }
 
 /**
@@ -141,7 +167,24 @@ function renderX (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
     }
     bottom -= x.labelSize + option.padding.gap
   }
-  ctx.moveTo(res.left, cal.zero)
-  ctx.lineTo(res.right, cal.zero)
-  ctx.stroke()
+
+  switch (x.type) {
+    case 'arrow':
+      ctx.fillStyle = x.lineColor
+      ctx.moveTo(res.right - 2, cal.zero)
+      ctx.lineTo(res.right - 2, cal.zero - 1)
+      ctx.lineTo(res.right, cal.zero)
+      ctx.lineTo(res.right - 2, cal.zero + 1)
+      ctx.lineTo(res.right - 2, cal.zero)
+      ctx.fill()
+      ctx.moveTo(res.left, cal.zero)
+      ctx.lineTo(res.right, cal.zero)
+      ctx.stroke()
+      break
+    case 'line':
+      ctx.moveTo(res.left, cal.zero)
+      ctx.lineTo(res.right, cal.zero)
+      ctx.stroke()
+      break
+  }
 }

@@ -35,14 +35,15 @@ export function calAxisY (data: any[][], lineHeight: number, option: Option, res
         // const unit = 
         if (maxNum * minNum >= 0) {
           const unit = lineHeight / Math.floor((cur + maxAbsNum) / cur)
-          if (unit >= 20) {
+          // 40代表单位间距
+          if (unit >= option.unitGap ?? 20) {
             unitGap = cur
             flag = true
             break
           }
         } else {
           const unit = lineHeight / Math.floor((cur * 2 + distance) / cur)
-          if (unit >= 20) {
+          if (unit >= option.unitGap ?? 20) {
             unitGap = cur
             flag = true
             break
