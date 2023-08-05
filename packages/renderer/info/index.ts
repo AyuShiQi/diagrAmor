@@ -8,7 +8,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   const { width } = ctx.canvas
   // ctx.textBaseline = top'、'bottom'、'middle'、'alphabetic'、'hanging'，'ideograpgic' alphabetic
 
-  if (unit === false && unit === false) return res
+  if (!unit && !source) return res
   const { left, right, top, bottom } = res
 
   // 首先渲染单位

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUpdated } from 'vue'
 import propsImport from './props/amor-chart'
 import type { AmorChartProps, ResultInfo } from './types/amor-chart-type'
 const props = defineProps(propsImport) as AmorChartProps
@@ -27,7 +27,8 @@ const amorCanvas = ref()
 
 function render () {
   const ctx = amorCanvas.value.getContext('2d') as CanvasRenderingContext2D
-  // console.log(ctx)
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+
   const { option } = props
   const resInfo: ResultInfo = {
     left: option.padding.x,
@@ -38,29 +39,38 @@ function render () {
 
   ctx.lineWidth = 1
   // 这里是标题渲染器
+  console.log(resInfo)
   titleRenderer(option, ctx, resInfo)
   // 这里是单位渲染器
+  console.log(resInfo)
   infoRenderer(option, ctx, resInfo)
   // 标签渲染器
+  console.log(resInfo)
   labelRenderer(option, ctx, resInfo)
   const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
   // 这里是坐标轴渲染器入口
+  console.log(resInfo)
   axisRenderer(option, ctx, resInfo, calInfo)
   // 这里是内容物渲染
+  console.log(resInfo)
   switch(option.type) {
     case 0:
       chartRenderer(option, ctx, resInfo, calInfo)
       break
   }
+  console.log(resInfo)
+  console.log('finish')
 }
+
+defineExpose({ render })
 
 onMounted(() => {
   render()
 })
 
-// onUpdated(() => {
-//   render()
-// })
+onUpdated(() => {
+  render()
+})
 </script>
 
 <style lang="less">

@@ -29,26 +29,26 @@ export type Option = {
     gap: number
   }
   title: {
-    content: string | false,
+    content: string,
     size: number,
     color: string,
     align: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right',
     font: string
   },
   info: {
-    unit: string | false,
+    unit: string,
     unitSize: number,
     unitColor: string,
     unitAlign: 'left' | 'right' | 'center',
     unitFont: string, // 'Helvetica'// 'serif'
-    source: string | false,
+    source: string,
     sourceSize: number,
     sourceColor: string,
     sourceAlign: 'left' | 'right' | 'center',
     sourceFont: string // 'Helvetica'// 'serif'
   },
   unit: {
-    content: string | false,
+    content: string,
     size: number,
     color: string
   },

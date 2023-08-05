@@ -5,7 +5,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   const { width } = ctx.canvas
   // ctx.textBaseline = top'、'bottom'、'middle'、'alphabetic'、'hanging'，'ideograpgic' alphabetic
 
-  if (title.content === false) return res
+  if (!title.content) return res
   const { left, right, top, bottom } = res
   ctx.fillStyle = title.color
   ctx.font = `${title.size}px ${title.font}`
