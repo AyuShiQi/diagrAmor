@@ -22,7 +22,9 @@ export function calAxisY (data: any[][], lineHeight: number, option: Option, res
   // 自动计算间距
   let now = 1
   let unitGap = 0
+
   while (true) {
+    if (lineHeight <= 0) break
     // break出界标志
     let flag = false
     let t = now * 10

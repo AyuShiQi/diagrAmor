@@ -1,8 +1,9 @@
 {
   "name": "diagr-amor",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.4",
   "type": "module",
+  "main": "dist/vite-lib.umd.js",
   "scripts": {
     "dev": "vite --open --host",
     "build": "vue-tsc && vite build",

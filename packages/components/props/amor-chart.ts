@@ -4,7 +4,7 @@ export default {
     default: {
       type: 0, // 条形图
       width: 300,
-      height: 300,
+      height: 150,
       background: '#fff',
       attention: {
         color: '#888',
