@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUpdated } from 'vue'
+import { ref, onMounted } from 'vue'
 import propsImport from './props/amor-chart'
 import type { AmorChartProps, ResultInfo } from './types/amor-chart-type'
 const props = defineProps(propsImport) as AmorChartProps
@@ -25,64 +25,42 @@ import chartRenderer from '../renderer/charts/bar-charts'
 
 const amorCanvas = ref()
 
+function render () {
+  const ctx = amorCanvas.value.getContext('2d') as CanvasRenderingContext2D
+  // console.log(ctx)
+  const { option } = props
+  const resInfo: ResultInfo = {
+    left: option.padding.x,
+    right: ctx.canvas.width - option.padding.x,
+    top: option.padding.y,
+    bottom: ctx.canvas.height - option.padding.y
+  }
+
+  ctx.lineWidth = 1
+  // 这里是标题渲染器
+  titleRenderer(option, ctx, resInfo)
+  // 这里是单位渲染器
+  infoRenderer(option, ctx, resInfo)
+  // 标签渲染器
+  labelRenderer(option, ctx, resInfo)
+  const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
+  // 这里是坐标轴渲染器入口
+  axisRenderer(option, ctx, resInfo, calInfo)
+  // 这里是内容物渲染
+  switch(option.type) {
+    case 0:
+      chartRenderer(option, ctx, resInfo, calInfo)
+      break
+  }
+}
+
 onMounted(() => {
-  console.log('ok')
-  const ctx = amorCanvas.value.getContext('2d')
-  // console.log(ctx)
-  const { option } = props
-  const resInfo: ResultInfo = {
-    left: option.padding.x,
-    right: ctx.canvas.width - option.padding.x,
-    top: option.padding.y,
-    bottom: ctx.canvas.height - option.padding.y
-  }
-
-  ctx.lineWidth = 1
-  // 这里是标题渲染器
-  titleRenderer(option, ctx, resInfo)
-  // 这里是单位渲染器
-  infoRenderer(option, ctx, resInfo)
-  // 标签渲染器
-  labelRenderer(option, ctx, resInfo)
-  const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
-  // 这里是坐标轴渲染器入口
-  axisRenderer(option, ctx, resInfo, calInfo)
-  // 这里是内容物渲染
-  switch(option.type) {
-    case 0:
-      chartRenderer(option, ctx, resInfo, calInfo)
-      break
-  }
+  render()
 })
 
-onUpdated(() => {
-  const ctx = amorCanvas.value.getContext('2d')
-  // console.log(ctx)
-  const { option } = props
-  const resInfo: ResultInfo = {
-    left: option.padding.x,
-    right: ctx.canvas.width - option.padding.x,
-    top: option.padding.y,
-    bottom: ctx.canvas.height - option.padding.y
-  }
-
-  ctx.lineWidth = 1
-  // 这里是标题渲染器
-  titleRenderer(option, ctx, resInfo)
-  // 这里是单位渲染器
-  infoRenderer(option, ctx, resInfo)
-  // 标签渲染器
-  labelRenderer(option, ctx, resInfo)
-  const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
-  // 这里是坐标轴渲染器入口
-  axisRenderer(option, ctx, resInfo, calInfo)
-  // 这里是内容物渲染
-  switch(option.type) {
-    case 0:
-      chartRenderer(option, ctx, resInfo, calInfo)
-      break
-  }
-})
+// onUpdated(() => {
+//   render()
+// })
 </script>
 
 <style lang="less">
