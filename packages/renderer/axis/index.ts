@@ -129,6 +129,7 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
   }
 
   ctx.strokeStyle = y.color
+  ctx.setLineDash([0, 0])
   switch (y.type) {
     case 'arrow':
       ctx.beginPath()
