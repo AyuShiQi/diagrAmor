@@ -39,27 +39,20 @@ function render () {
 
   ctx.lineWidth = 1
   // 这里是标题渲染器
-  console.log(resInfo)
   titleRenderer(option, ctx, resInfo)
   // 这里是单位渲染器
-  console.log(resInfo)
   infoRenderer(option, ctx, resInfo)
   // 标签渲染器
-  console.log(resInfo)
   labelRenderer(option, ctx, resInfo)
   const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
   // 这里是坐标轴渲染器入口
-  console.log(resInfo)
   axisRenderer(option, ctx, resInfo, calInfo)
   // 这里是内容物渲染
-  console.log(resInfo)
   switch(option.type) {
     case 0:
       chartRenderer(option, ctx, resInfo, calInfo)
       break
   }
-  console.log(resInfo)
-  console.log('finish')
 }
 
 defineExpose({ render })
