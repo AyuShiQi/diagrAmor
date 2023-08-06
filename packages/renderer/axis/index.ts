@@ -161,6 +161,7 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
 function renderX (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo, cal: CalInfo) {
   const { x } = option.axis
   const cellWidth = (res.right - res.left) / (option.data.length - 1)
+  if (cellWidth <= 0) return
   let { left, bottom, top } = res
 
   // 渲染label
