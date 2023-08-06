@@ -37,6 +37,8 @@ function render () {
     bottom: ctx.canvas.height - option.padding.y
   }
 
+  if (resInfo.left >= resInfo.right || resInfo.top >= resInfo.bottom) return
+
   ctx.lineWidth = 1
   // 这里是标题渲染器
   titleRenderer(option, ctx, resInfo)
