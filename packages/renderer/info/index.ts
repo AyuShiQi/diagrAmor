@@ -11,6 +11,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   if (!unit && !source) return res
   const { left, right, top, bottom } = res
 
+  if (left >= right) return res
   // 首先渲染单位
   if (unit) {
     ctx.fillStyle = unitColor

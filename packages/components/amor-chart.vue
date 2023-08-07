@@ -46,6 +46,8 @@ function render () {
   infoRenderer(option, ctx, resInfo)
   // 标签渲染器
   labelRenderer(option, ctx, resInfo)
+
+  if (resInfo.left >= resInfo.right || resInfo.top >= resInfo.bottom) return
   const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
   // 这里是坐标轴渲染器入口
   axisRenderer(option, ctx, resInfo, calInfo)

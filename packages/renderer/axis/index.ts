@@ -19,6 +19,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D, res: Res
  */
 function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo, cal: CalInfo) {
   const { x, y } = option.axis
+  if (res.left >= res.right) return
   let { left, bottom, top } = res
 
   ctx.textAlign = 'right'
@@ -162,7 +163,7 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
 function renderX (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo, cal: CalInfo) {
   const { x } = option.axis
   const cellWidth = (res.right - res.left) / (option.data.length - 1)
-  if (cellWidth <= 0) return
+  if (cellWidth <= 0 || res.left >= res.right) return
   let { left, bottom, top } = res
 
   // 渲染label
