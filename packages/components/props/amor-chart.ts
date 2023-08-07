@@ -65,6 +65,7 @@ export default {
         }
       },
       label: {
+        open: true,
         content: [
           {
             tag: '高中',

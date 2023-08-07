@@ -2,6 +2,7 @@ import type { Option, ResultInfo } from '../../components/types/amor-chart-type'
 
 export default function (option: Option, ctx: CanvasRenderingContext2D,res: ResultInfo): ResultInfo {
   const { label: {
+    open,
     content,
     size,
     align,
@@ -10,10 +11,10 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   }, padding: { gap } } = option
   // ctx.textBaseline = top'、'bottom'、'middle'、'alphabetic'、'hanging'，'ideograpgic' alphabetic
 
-  if (content === false) return res
+  if (!open) return res
   const { right } = res
   let { left } = res
-  ctx.font = `${size}px ${font}`
+  ctx.font = `${size ?? 12}px ${font}`
 
 //   console.log(align)
   switch (align) {

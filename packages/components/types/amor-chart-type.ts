@@ -54,7 +54,8 @@ export type Option = {
     color: string
   },
   label: {
-    content: ({ tag: string, color: string})[] | false
+    open: boolean
+    content: ({ tag: string, color: string})[]
     size: number,
     color: string,
     align: 'top' | 'bottom',
