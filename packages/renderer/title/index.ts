@@ -7,7 +7,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
 
   if (!title.content) return res
   const { left, right, top, bottom } = res
-  if (left >= right) return res
+  if (left >= right || top >= bottom) return res
   // 调整文字颜色
   ctx.fillStyle = title.color
   ctx.font = `${title.size}px ${title.font}`

@@ -3,7 +3,7 @@ import { reactive } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 const option = reactive({
   type: 0, // 条形图
-  width: 300,
+  width: 60,
   height: 350,
   background: '#fff',
   unitGap: 20,

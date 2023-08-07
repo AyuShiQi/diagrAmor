@@ -21,6 +21,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
       ctx.textAlign = 'left'
       ctx.textBaseline = 'top'
       for (const label of content) {
+        if (res.top >= res.bottom) break
         if (left + 4 + size + ctx.measureText(label.tag).width + gap > right) {
           left = res.left
           res.top += gap + size
@@ -38,6 +39,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
       ctx.textAlign = 'left'
       ctx.textBaseline = 'bottom'
       for (const label of content) {
+        if (res.top >= res.bottom) break
         if (left + 4 + size + label.tag.length * size + gap > right) {
           left = res.left
           res.bottom -= gap + size
