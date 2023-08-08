@@ -18,10 +18,11 @@ export type Option = {
   background: string,
   unitGap: number,
   attention: {
+    open: boolean,
     color: string
     size: number
     font: string
-  } | false
+  }
   axis: Axis,
   data: any[][],
   padding: {

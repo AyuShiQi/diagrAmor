@@ -8,6 +8,7 @@ export default {
       background: '#fff',
       unitGap: 20,
       attention: {
+        open: true,
         color: '#888',
         size: 12,
         font: 'serif'
@@ -17,7 +18,6 @@ export default {
         y: 8,
         gap: 8
       },
-
       data: [
         ['类型', '数量'],
         ['高中', 482.3],

@@ -14,7 +14,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D, res: Res
     ctx.fillStyle = (option.label as any).content[i++].color
     ctx.fillRect(left + option.padding.gap, cal.zero, rectwidth, len)
     ctx.fill()
-    if (option.attention) {
+    if (option.attention.open) {
       // console.log(line[1])
       ctx.font = `${option.attention.size}px ${option.attention.font}`
       ctx.fillStyle = option.attention.color
