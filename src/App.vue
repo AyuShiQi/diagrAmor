@@ -85,7 +85,7 @@ const option = reactive({
       }
     ],
     color: '#aaa',
-    size: 11,
+    size: 114,
     align: 'top',
     font: 'serif' // 'Helvetica'// 'serif'
   }

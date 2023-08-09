@@ -14,7 +14,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   if (!open) return res
   const { right } = res
   let { left } = res
-  ctx.font = `${size ?? 12}px ${font}`
+  ctx.font = `${size}px ${font}`
 
 //   console.log(align)
   switch (align) {
@@ -22,11 +22,13 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
       ctx.textAlign = 'left'
       ctx.textBaseline = 'top'
       for (const label of content) {
-        if (res.top >= res.bottom) break
-        if (left + 4 + size + ctx.measureText(label.tag).width + gap > right) {
+        // console.log('before', res.top, res.bottom)
+        while (left + 4 + size + ctx.measureText(label.tag).width + gap > right) {
           left = res.left
           res.top += gap + size
+          if (res.top >= res.bottom) break
         }
+        if (res.top >= res.bottom) break
         ctx.fillStyle = label.color
         ctx.fillRect(left, res.top, size, size)
         left += 4 + size
