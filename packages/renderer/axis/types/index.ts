@@ -6,7 +6,8 @@ export type Axis = {
     line: 'none' | 'line' | 'dashed', // 水平线样式
     color: string, // 坐标轴颜色
     lineColor: string, // 水平线颜色
-    labelColor: string // 标签颜色
+    labelColor: string, // 标签颜色
+    font: string
   },
   y: {
     type: 'none' | 'line' | 'arrow', // 坐标轴样式
@@ -15,6 +16,7 @@ export type Axis = {
     line: 'none' | 'line' | 'dashed', // 水平线样式
     color: string, // 坐标轴颜色
     lineColor: string, // 水平线颜色
-    labelColor: string // 标签颜色
+    labelColor: string, // 标签颜色
+    font: string
   }
 }

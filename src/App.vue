@@ -3,8 +3,8 @@ import { reactive } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 const option = reactive({
   type: 0, // 条形图
-  width: 60,
-  height: 350,
+  width: 300,
+  height: 300,
   background: '#fff',
   unitGap: 20,
   attention: {
@@ -61,10 +61,11 @@ const option = reactive({
       color: '#000',
       lineColor: '#aaa',
       labelColor: '#888',
-      labelSize: 12
+      labelSize: 24
     }
   },
   label: {
+    open: true,
     content: [
       {
         tag: '高中',
@@ -84,7 +85,7 @@ const option = reactive({
       }
     ],
     color: '#aaa',
-    size: 14,
+    size: 11,
     align: 'top',
     font: 'serif' // 'Helvetica'// 'serif'
   }

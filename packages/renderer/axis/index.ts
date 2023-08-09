@@ -24,6 +24,7 @@ function renderY (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
 
   ctx.textAlign = 'right'
   ctx.textBaseline = 'middle'
+  ctx.font = `${y.labelSize}px ${y.font}`
   if (x.label) {
     bottom -= x.labelSize + option.padding.gap - 1
   }
@@ -170,7 +171,7 @@ function renderX (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo
   if (x.label) {
     ctx.textAlign = 'center'
     ctx.textBaseline = 'bottom'
-    ctx.font = `${x.labelSize}px ${'serif'}`
+    ctx.font = `${x.labelSize}px ${x.font}`
     const center = cellWidth / 2
     for (const line of option.data.slice(1)) {
       ctx.beginPath()

@@ -52,7 +52,8 @@ export default {
           color: '#000',
           lineColor: '#aaa',
           labelColor: '#888',
-          labelSize: 12
+          labelSize: 12,
+          font: 'seirf'
         },
         y: {
           type: 'line', // none line arrow(带箭头的)
@@ -61,7 +62,8 @@ export default {
           color: '#000',
           lineColor: '#aaa',
           labelColor: '#888',
-          labelSize: 12
+          labelSize: 12,
+          font: 'seirf'
         }
       },
       label: {
