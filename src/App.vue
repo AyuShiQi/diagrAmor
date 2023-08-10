@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref, watch } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 const option = reactive({
   type: 0, // 条形图
@@ -85,15 +85,23 @@ const option = reactive({
       }
     ],
     color: '#aaa',
-    size: 114,
+    size: 11,
     align: 'top',
     font: 'serif' // 'Helvetica'// 'serif'
   }
 })
+
+const chart = ref()
+
+watch(option, () => {
+  chart.value.render()
+  // console.log(option.label.size)
+})
 </script>
 
 <template>
-  <amor-chart :option="option"></amor-chart>
+  <input v-model="option.label.size"/>
+  <amor-chart :option="option" ref="chart"></amor-chart>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 

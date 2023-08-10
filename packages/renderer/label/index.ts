@@ -16,6 +16,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   let { left } = res
   ctx.font = `${size}px ${font}`
 
+  // console.log('ok', size)
 //   console.log(align)
   switch (align) {
     case 'top':

@@ -15,6 +15,7 @@ import propsImport from './props/amor-chart'
 import type { AmorChartProps, ResultInfo } from './types/amor-chart-type'
 const props = defineProps(propsImport) as AmorChartProps
 
+import { handleOption } from '../calculate/option'
 import { calAxisY } from '../calculate/axis'
 // 渲染器
 import titleRenderer from '../renderer/title/index'
@@ -39,6 +40,8 @@ function render () {
 
   if (resInfo.left >= resInfo.right || resInfo.top >= resInfo.bottom) return
 
+  handleOption(option)
+
   ctx.lineWidth = 1
   // 这里是标题渲染器
   titleRenderer(option, ctx, resInfo)
@@ -48,6 +51,7 @@ function render () {
   labelRenderer(option, ctx, resInfo)
 
   if (resInfo.left >= resInfo.right || resInfo.top >= resInfo.bottom) return
+  // 计算坐标数据
   const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
   // 这里是坐标轴渲染器入口
   axisRenderer(option, ctx, resInfo, calInfo)
