@@ -17,7 +17,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
   ctx.font = `${size}px ${font}`
 
   // console.log('ok', size)
-//   console.log(align)
+  // console.log(align)
   switch (align) {
     case 'top':
       ctx.textAlign = 'left'
@@ -27,6 +27,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
         while (left + 4 + size + ctx.measureText(label.tag).width + gap > right) {
           left = res.left
           res.top += gap + size
+          // console.log('before', res.top, res.bottom)
           if (res.top >= res.bottom) break
         }
         if (res.top >= res.bottom) break
@@ -36,6 +37,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D,res: Resu
         ctx.fillStyle = color
         ctx.fillText(label.tag, left, res.top)
         left += label.tag.length * size + gap
+        // console.log('渲染finish')
       }
       res.top += gap + size
       break

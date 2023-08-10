@@ -3,8 +3,8 @@ import { reactive, ref, watch } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 const option = reactive({
   type: 0, // 条形图
-  width: 300,
-  height: 300,
+  width: 600,
+  height: 600,
   background: '#fff',
   unitGap: 20,
   attention: {

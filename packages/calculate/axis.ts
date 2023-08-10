@@ -1,5 +1,5 @@
 import type { Option, ResultInfo } from "../components/types/amor-chart-type"
-const map = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+const map = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 export type CalInfo = {
   minNum: number,
@@ -10,6 +10,7 @@ export type CalInfo = {
 }
 
 export function calAxisY (data: any[][], lineHeight: number, option: Option, res: ResultInfo): CalInfo {
+  // debugger
   let maxNum = Number.MIN_SAFE_INTEGER
   let minNum = Number.MAX_SAFE_INTEGER
   for(const line of data.slice(1)) {
@@ -24,10 +25,9 @@ export function calAxisY (data: any[][], lineHeight: number, option: Option, res
   let unitGap = 0
 
   while (true) {
-    if (lineHeight <= 0) break
     // break出界标志
     let flag = false
-    let t = now * 10
+    let t = now
     if (Math.floor((maxAbsNum + t) / t) * t >= maxAbsNum) {
       for (const gap of map) {
         // 当前的单位间距
@@ -38,6 +38,11 @@ export function calAxisY (data: any[][], lineHeight: number, option: Option, res
           // 40代表单位间距
           if (unit >= option.unitGap ?? 20) {
             unitGap = cur
+            flag = true
+            break
+          }
+          if (unit >= lineHeight) {
+            unitGap = 1
             flag = true
             break
           }
