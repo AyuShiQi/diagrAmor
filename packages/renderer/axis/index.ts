@@ -2,7 +2,9 @@ import type { CalInfo } from '../../calculate/axis'
 import type { Option, ResultInfo } from '../../components/types/amor-chart-type'
 
 export default function (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo, cal: CalInfo): ResultInfo {
-  if (option.axis.y.label !== false) {
+  // 如果存在label
+  if (option.axis.y.label) {
+    ctx.font = `${option.axis.y.labelSize}px ${option.axis.y.font}`
     res.left += Math.max(ctx.measureText(cal.maxNum + '').width, ctx.measureText(cal.minNum + '').width) + 2 + option.padding.gap
   }
   // 计算0点位置
