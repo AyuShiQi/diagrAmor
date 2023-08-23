@@ -8,7 +8,7 @@ export default function (option: Option, ctx: CanvasRenderingContext2D, res: Res
   chartAxis(option, ctx, res, cal)
   const cellWidth = (res.right - res.left) / (option.data.length - 1)
   const rectwidth = cellWidth - (option.padding.gap * 2)
-  if (res.left >= res.right || cellWidth <= 0 || rectwidth <= 0) return res
+  if (res.left >= res.right || res.bottom >= res.top || cellWidth <= 0 || rectwidth <= 0) return res
   let { left } = res
   let i = 0
   for (const line of option.data.slice(1)) {

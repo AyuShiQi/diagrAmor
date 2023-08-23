@@ -2,14 +2,14 @@
 import { reactive, ref, watch } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 const option = reactive({
-  type: 1, // 0条形图 1折线图
+  type: 2, // 0条形图 1折线图 2饼状图
   width: 600,
   height: 600,
   background: '#fff',
   unitGap: 20,
   attention: {
     open: true,
-    color: '#888',
+    color: '#000',
     size: 12,
     font: 'serif'
   },
