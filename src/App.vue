@@ -2,12 +2,13 @@
 import { reactive, ref, watch } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 const option = reactive({
-  type: 0, // 条形图
+  type: 1, // 0条形图 1折线图
   width: 600,
   height: 600,
   background: '#fff',
   unitGap: 20,
   attention: {
+    open: true,
     color: '#888',
     size: 12,
     font: 'serif'
@@ -17,13 +18,12 @@ const option = reactive({
     y: 8,
     gap: 8
   },
-
   data: [
-    ['类型', '数量'],
-    ['高中', 482.3],
-    ['学士', 568],
-    ['硕士', 573.8],
-    ['博士', 200]
+    ['类型', '1', '2', '3', '4'],
+    ['高中', 482.3, 482.3, 482.3, 482.3],
+    ['学士', 568, 2.3, 482.3, 48],
+    ['硕士', 573.8, 4, 600, 50],
+    ['博士', 200, 482.3, 482.3, 20]
   ],
   title: {
     content: '这里是标题',

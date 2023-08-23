@@ -16,13 +16,12 @@ import type { AmorChartProps, ResultInfo } from './types/amor-chart-type'
 const props = defineProps(propsImport) as AmorChartProps
 
 import { handleOption } from '../calculate/option'
-import { calAxisY } from '../calculate/axis'
 // 渲染器
 import titleRenderer from '../renderer/title/index'
 import infoRenderer from '../renderer/info'
 import labelRenderer from '../renderer/label'
-import axisRenderer from '../renderer/axis/'
-import chartRenderer from '../renderer/charts/bar-charts'
+// import axisRenderer from '../renderer/axis/'
+import chartRenderer from '../renderer/charts/chart-render'
 
 const amorCanvas = ref()
 
@@ -51,16 +50,10 @@ function render () {
   labelRenderer(option, ctx, resInfo)
 
   if (resInfo.left >= resInfo.right || resInfo.top >= resInfo.bottom) return
-  // 计算坐标数据
-  const calInfo = calAxisY(option.data, resInfo.bottom - resInfo.top, option, resInfo)
   // 这里是坐标轴渲染器入口
-  axisRenderer(option, ctx, resInfo, calInfo)
+  // axisRenderer(option, ctx, resInfo, calInfo)
   // 这里是内容物渲染
-  switch(option.type) {
-    case 0:
-      chartRenderer(option, ctx, resInfo, calInfo)
-      break
-  }
+  chartRenderer(option, ctx, resInfo)
 }
 
 defineExpose({ render })

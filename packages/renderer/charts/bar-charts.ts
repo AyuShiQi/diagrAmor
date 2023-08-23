@@ -1,8 +1,11 @@
-import type { CalInfo } from '../../calculate/axis'
 import type { Option, ResultInfo } from '../../components/types/amor-chart-type'
 
-export default function (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo, cal: CalInfo): ResultInfo {
-//   console.log(cal)
+import chartAxis from './axis/bar-chart'
+import { calAxisY } from './cal/bar-axis'
+
+export default function (option: Option, ctx: CanvasRenderingContext2D, res: ResultInfo): ResultInfo {
+  const cal = calAxisY(option.data, res.bottom - res.top, option, res)
+  chartAxis(option, ctx, res, cal)
   const cellWidth = (res.right - res.left) / (option.data.length - 1)
   const rectwidth = cellWidth - (option.padding.gap * 2)
   if (res.left >= res.right || cellWidth <= 0 || rectwidth <= 0) return res
